@@ -11,6 +11,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
       TYPEORM_SYNCHRONISE: ${TYPEORM_SYNCHRONISE:-false} #set to false in prod
+      FRONTEND_URL: ${FRONTEND_URL}
       REDIS_HOST: redis # the service name
       REDIS_PORT: ${REDIS_PORT:-6379}
       REDIS_PASSWORD: ${REDIS_PASSWORD}
