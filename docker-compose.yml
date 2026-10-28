@@ -30,7 +30,7 @@ services:
     ports:
       - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
     volumes:
-      - dum_pg_data:/var/lib/postgresql
+      - dinero_pg_data:/var/lib/postgresql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
       interval: 10s
@@ -38,24 +38,24 @@ services:
       retries: 5
       start_period: 20s
   
-  redis:
-    image: redis:8-alpine3.21
-    # will prevent public internet access
-    # ports:
-    #   - "6379:6379"
-    ports:
-      - "127.0.0.1:6379:6379"
-    volumes:
-      - dum_redis_data:/data
-    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:?must be set}
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "redis-cli -a \"$${REDIS_PASSWORD}\" ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
+  # redis:
+  #   image: redis:8-alpine3.21
+  #   # will prevent public internet access
+  #   # ports:
+  #   #   - "6379:6379"
+  #   ports:
+  #     - "127.0.0.1:6379:6379"
+  #   volumes:
+  #     - dum_redis_data:/data
+  #   command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:?must be set}
+  #   restart: unless-stopped
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "redis-cli -a \"$${REDIS_PASSWORD}\" ping"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+  #     start_period: 10s
   
 volumes:
-  dum_pg_data:
-  dum_redis_data:
+  dinero_pg_data:
+  # dum_redis_data:

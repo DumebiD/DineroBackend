@@ -8,6 +8,8 @@ import { QuoteModule } from './quote/quote.module.js';
 import { LedgerEntryModule } from './ledger_entry/ledger_entry.module.js';
 import { FeeModule } from './fee/fee.module.js';
 import { typeormConfig } from './config/typeorm.config.js';
+import { UserModule } from './user/user.module.js';
+import { AuthModule } from './auth/auth.module.js';
 
 @Module({
   imports: [
@@ -25,7 +27,9 @@ import { typeormConfig } from './config/typeorm.config.js';
     RuleModule,
     QuoteModule,
     LedgerEntryModule,
-    FeeModule
+    FeeModule,
+    UserModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
