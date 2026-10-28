@@ -85,7 +85,8 @@ export class Rule {
     @Column({ type: 'varchar', nullable: true })
     approverGroup: string | null;    // only relevant if a rule needs approval
 
-    @Column({ type: 'jsonb', default: () => `'{"all":[]}'` })
+    // @Column({ type: 'jsonb', default: () => `'{"all":[]}'` }) - no space
+    @Column({ type: 'jsonb', default: () => `'{"all": []}'` })
     conditions: RuleConditions;
 
     // ---- Fee ----
